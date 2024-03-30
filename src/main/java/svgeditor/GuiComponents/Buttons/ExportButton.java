@@ -12,7 +12,7 @@ public class ExportButton<TSerializer extends ISerializer> extends JButton  {
         this.serializer = serializer;
         this.addActionListener((event) -> {
 
-            String serializeData = this.serializer.serialize(ObjectManager.graphicObjects);
+            String serializeData = this.serializer.serialize(ObjectManager.getGraphicObjects());
 
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);

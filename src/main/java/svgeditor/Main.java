@@ -24,10 +24,10 @@ public class Main
         ISerializer xmlSerializer = new XmlSerializer();
         ISerializer jsonSerializer = new JsonSerializer();
 
-        var xml = xmlSerializer.serialize(ObjectManager.graphicObjects);
+        var xml = xmlSerializer.serialize(ObjectManager.getGraphicObjects());
         var xmlBack = xmlSerializer.deserialize(xml);
 
-        var json = jsonSerializer.serialize(ObjectManager.graphicObjects);
+        var json = jsonSerializer.serialize(ObjectManager.getGraphicObjects());
         var jsonBack = jsonSerializer.deserialize(json);
 
 
