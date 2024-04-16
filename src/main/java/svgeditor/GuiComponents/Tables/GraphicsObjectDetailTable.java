@@ -11,9 +11,11 @@ import svgeditor.Utils.GraphicObjectManager;
 import svgeditor.Utils.Interfaces.ISubscriber;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GraphicsObjectDetailTable extends JTable implements ISubscriber {
     public GraphicsObjectDetailTable() {
+        setBackground(Color.lightGray);
         ComponentsObserver.addSubscriber(this);
     }
 

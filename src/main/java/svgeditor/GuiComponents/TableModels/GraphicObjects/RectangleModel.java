@@ -4,6 +4,7 @@ import svgeditor.GraphicsObjects.Rectangle;
 import svgeditor.Utils.GraphicObjectManager;
 
 import javax.swing.table.AbstractTableModel;
+import java.awt.*;
 
 public class RectangleModel extends AbstractTableModel implements IIndex {
     @Override
@@ -41,8 +42,23 @@ public class RectangleModel extends AbstractTableModel implements IIndex {
         var rectangle = (Rectangle)GraphicObjectManager.getSelectedObject();
 
         double numberValue = 0;
-        if(rowIndex != 5)
-            numberValue = Double.parseDouble((String)value);
+        if(rowIndex != 5){
+            try {
+                numberValue = Double.parseDouble((String)value);
+            } catch (NumberFormatException e) {
+                return;
+            }
+        }
+
+        if(rowIndex == 5){
+            // Check if the color is valid
+            try {
+                var color = ((String)value).toUpperCase();
+                Color.decode(color);
+            } catch (NumberFormatException e) {
+                return;
+            }
+        }
 
         switch (rowIndex) {
             case 0 -> rectangle.x1 = numberValue;

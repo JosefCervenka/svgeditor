@@ -6,10 +6,14 @@ import svgeditor.Utils.GraphicObjectManager;
 import svgeditor.Utils.Interfaces.ISubscriber;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GraphicsObjectTable extends JTable implements ISubscriber {
     public GraphicsObjectTable() {
         ComponentsObserver.addSubscriber(this);
+
+        setBackground(Color.lightGray);
+
         this.getSelectionModel().addListSelectionListener(e -> {
             int selectedRow = this.getSelectedRow();
 
