@@ -1,15 +1,25 @@
 package svgeditor.GuiComponents.Tables;
 
-import svgeditor.Utils.ObjectManager;
+import svgeditor.GuiComponents.TableModels.GraphicObjectModel;
+import svgeditor.Utils.ComponentsObserver;
+import svgeditor.Utils.GraphicObjectManager;
+import svgeditor.Utils.Interfaces.ISubscriber;
 
 import javax.swing.*;
-import javax.swing.table.TableModel;
-import java.awt.*;
 
-public class GraphicsObjectTable extends JTable {
-    public GraphicsObjectTable(){
-        super();
+public class GraphicsObjectTable extends JTable implements ISubscriber {
+    public GraphicsObjectTable() {
+        ComponentsObserver.addSubscriber(this);
+        this.getSelectionModel().addListSelectionListener(e -> {
+            int selectedRow = this.getSelectedRow();
 
-        setPreferredSize(new Dimension(200,  getMaximumSize().height));
+            if (selectedRow != -1)
+                GraphicObjectManager.setSelectedObject(selectedRow);
+        });
+    }
+
+    public void update() {
+        this.setModel(new GraphicObjectModel());
+        revalidate();
     }
 }

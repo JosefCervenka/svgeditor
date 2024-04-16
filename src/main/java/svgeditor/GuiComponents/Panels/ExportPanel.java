@@ -17,6 +17,7 @@ public class ExportPanel extends JPanel {
         var xmlSerializerExportButton = new ExportButton<>("XML EXPORT", new XmlSerializer(), "exportSVGEditor.xml");
         var jsonSeriliazerImportButton = new ImportButton<>("JSON IMPORT", new JsonSerializer(),"json");
         var xmlSeriliazerImportButton = new ImportButton<>("XML IMPORT", new XmlSerializer(),"xml");
+
         add(jsonSerializerExportButton);
         add(xmlSerializerExportButton);
         add(jsonSeriliazerImportButton);

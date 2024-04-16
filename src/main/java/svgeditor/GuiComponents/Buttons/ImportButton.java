@@ -1,13 +1,13 @@
 package svgeditor.GuiComponents.Buttons;
 
-import svgeditor.Utils.ObjectManager;
+import svgeditor.Utils.GraphicObjectManager;
 import svgeditor.Utils.Serializers.FileManagers.FileLoader;
-import svgeditor.Utils.Serializers.Interfaces.ISerializer;
+import svgeditor.Utils.Serializers.Interfaces.ISerializable;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class ImportButton<TSerializer extends ISerializer> extends JButton {
+public class ImportButton<TSerializer extends ISerializable> extends JButton {
     private final TSerializer serializer;
 
     public ImportButton(String label, TSerializer serializer, String fileType) {
@@ -28,7 +28,7 @@ public class ImportButton<TSerializer extends ISerializer> extends JButton {
             var data = fileLoader.load(directory);
             var listGraphicsObjects = this.serializer.deserialize(data);
 
-            ObjectManager.setGraphicsObjects(listGraphicsObjects);
+            GraphicObjectManager.set(listGraphicsObjects);
         });
     }
 }

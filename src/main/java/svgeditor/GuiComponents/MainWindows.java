@@ -20,7 +20,7 @@ public class MainWindows extends JFrame {
         setExtendedState(MAXIMIZED_BOTH);
         setVisible(true);
 
-        setBackground(Color.white);
+        setBackground(Color.blue);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 

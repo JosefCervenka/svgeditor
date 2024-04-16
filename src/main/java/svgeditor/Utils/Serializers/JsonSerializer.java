@@ -4,12 +4,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import svgeditor.GraphicsObjects.GraphicObject;
 import svgeditor.Utils.Serializers.Adapters.JsonAdapter;
-import svgeditor.Utils.Serializers.Interfaces.ISerializer;
+import svgeditor.Utils.Serializers.Interfaces.ISerializable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class JsonSerializer implements ISerializer {
+public class JsonSerializer implements ISerializable {
     Gson gson = new GsonBuilder()
             .registerTypeHierarchyAdapter(GraphicObject.class, new JsonAdapter())
             .setPrettyPrinting()

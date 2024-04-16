@@ -3,15 +3,14 @@ package svgeditor.Utils.Serializers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import svgeditor.GraphicsObjects.GraphicObject;
 import svgeditor.Utils.Serializers.Adapters.XmlAdapter;
-import svgeditor.Utils.Serializers.Interfaces.ISerializer;
+import svgeditor.Utils.Serializers.Interfaces.ISerializable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class XmlSerializer implements ISerializer {
+public class XmlSerializer implements ISerializable {
     XmlMapper mapper = new XmlMapper();
 
     public XmlSerializer(){
