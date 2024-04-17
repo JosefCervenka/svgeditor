@@ -1,8 +1,9 @@
 package svgeditor.Utils;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import svgeditor.GraphicsObjects.GraphicObject;
+import svgeditor.GraphicsObjects.Line;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,6 @@ public class GraphicObjectManager {
         ComponentsObserver.update();
     }
 
-    @JacksonXmlElementWrapper(useWrapping = false)
     private static List<GraphicObject> graphicObjects = new ArrayList<GraphicObject>();
 
     public static void set(List<GraphicObject> graphicObjectList) {

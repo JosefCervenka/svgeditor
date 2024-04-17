@@ -51,7 +51,6 @@ public class LineModel extends AbstractTableModel implements IIndex {
         }
 
         if(rowIndex == 5){
-            // Check if the color is valid
             try {
                 var color = ((String)value).toUpperCase();
                 Color.decode(color);
@@ -66,9 +65,9 @@ public class LineModel extends AbstractTableModel implements IIndex {
             case 2 -> line.y1 = numberValue;
             case 3 -> line.y2 = numberValue;
             case 4 -> line.lineSize = numberValue;
-            case 5 -> line.color = (String)value;
+            case 5 -> line.color = ((String)value).toUpperCase();
         }
-        GraphicObjectManager.updateSelectedObject(index, line);
+        GraphicObjectManager.updateSelectedObject(getIndex(), line);
     }
 
     private int index = 0;

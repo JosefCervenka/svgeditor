@@ -23,6 +23,9 @@ public class Line extends GraphicObject implements IDrawable {
 
     @Override
     public void Draw(Graphics2D graphics){
+        if(graphics == null)
+            return;
+
         graphics.setStroke(new BasicStroke((int)lineSize));
         graphics.setColor(Color.decode(color));
         graphics.drawLine((int)x1, (int)x2, (int)y1, (int)y2);

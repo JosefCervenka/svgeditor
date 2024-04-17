@@ -22,6 +22,9 @@ public class Ellipse extends GraphicObject implements IDrawable {
     }
     @Override
     public void Draw(Graphics2D graphics){
+        if(graphics == null)
+            return;
+
         graphics.setColor(Color.decode(this.color));
         graphics.setStroke(new BasicStroke((int)this.lineSize));
         graphics.drawOval((int) this.x1, (int) this.x2, (int) this.width, (int) this.height);

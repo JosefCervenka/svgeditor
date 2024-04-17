@@ -51,7 +51,6 @@ public class RectangleModel extends AbstractTableModel implements IIndex {
         }
 
         if(rowIndex == 5){
-            // Check if the color is valid
             try {
                 var color = ((String)value).toUpperCase();
                 Color.decode(color);
@@ -66,9 +65,9 @@ public class RectangleModel extends AbstractTableModel implements IIndex {
             case 2 -> rectangle.width = numberValue;
             case 3 -> rectangle.height = numberValue;
             case 4 -> rectangle.lineSize = numberValue;
-            case 5 -> rectangle.color = (String)value;
+            case 5 -> rectangle.color = ((String)value).toUpperCase();
         }
-        GraphicObjectManager.updateSelectedObject(index, rectangle);
+        GraphicObjectManager.updateSelectedObject(getIndex(), rectangle);
     }
 
     private int index = 0;

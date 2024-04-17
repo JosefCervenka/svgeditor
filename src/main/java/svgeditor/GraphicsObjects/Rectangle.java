@@ -23,6 +23,9 @@ public class Rectangle extends GraphicObject implements IDrawable {
 
     @Override
     public void Draw(Graphics2D graphics){
+        if(graphics == null)
+            return;
+
         graphics.setStroke(new BasicStroke((int)lineSize));
         graphics.setColor(Color.decode(color));
         graphics.drawRect((int) this.x1, (int) this.x2, (int) this.width, (int) this.height);

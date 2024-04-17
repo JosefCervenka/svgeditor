@@ -51,7 +51,6 @@ public class EllipseModel extends AbstractTableModel implements IIndex {
         }
 
         if(rowIndex == 5){
-            // Check if the color is valid
             try {
                 var color = ((String)value).toUpperCase();
                 Color.decode(color);
@@ -66,10 +65,10 @@ public class EllipseModel extends AbstractTableModel implements IIndex {
             case 2 -> ellipse.width = numberValue;
             case 3 -> ellipse.height = numberValue;
             case 4 -> ellipse.lineSize = numberValue;
-            case 5 -> ellipse.color = (String)value;
+            case 5 -> ellipse.color = ((String)value).toUpperCase();
         }
 
-        GraphicObjectManager.updateSelectedObject(index, ellipse);
+        GraphicObjectManager.updateSelectedObject(getIndex(), ellipse);
     }
 
     private int index = 0;
