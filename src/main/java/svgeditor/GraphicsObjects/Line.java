@@ -2,16 +2,27 @@ package svgeditor.GraphicsObjects;
 
 import svgeditor.GraphicsObjects.Interfaces.IDrawable;
 
+import jakarta.xml.bind.annotation.*;
 import java.awt.*;
 
+@XmlRootElement(name = "line")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Line extends GraphicObject implements IDrawable {
+
+    @XmlAttribute(name = "cx")
     public double x1;
+
+    @XmlAttribute(name = "cy")
     public double x2;
+
+    @XmlAttribute(name = "rx")
     public double y1;
+
+    @XmlAttribute(name = "ry")
     public double y2;
 
     public Line(double x1, double x2, double y1, double y2, String color){
-        super(color, Line.class);
+        super(color);
         this.x1 = x1;
         this.x2 = x2;
         this.y1 = y1;

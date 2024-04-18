@@ -2,16 +2,27 @@ package svgeditor.GraphicsObjects;
 
 import svgeditor.GraphicsObjects.Interfaces.IDrawable;
 
+import jakarta.xml.bind.annotation.*;
 import java.awt.*;
 
+@XmlRootElement(name = "rect")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Rectangle extends GraphicObject implements IDrawable {
+
+    @XmlAttribute(name = "x")
     public double x1;
+
+    @XmlAttribute(name = "y")
     public double x2;
+
+    @XmlAttribute(name = "height")
     public double height;
+
+    @XmlAttribute(name = "width")
     public double width;
 
     public Rectangle(double x1, double x2, double width, double height, String color){
-        super(color, Rectangle.class);
+        super(color);
         this.x1 = x1;
         this.x2 = x2;
         this.width = width;

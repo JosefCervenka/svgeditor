@@ -25,7 +25,7 @@ public class GraphicObjectModel extends AbstractTableModel {
 
         return switch (columnIndex) {
             case 0 -> rowIndex + 1;
-            case 1 -> Arrays.stream(GraphicObjectManager.getAll().get(rowIndex).type.getTypeName().split("\\.")).toList().getLast();
+            case 1 -> Arrays.stream(GraphicObjectManager.getAll().get(rowIndex).getClass().toString().split("\\.")).reduce((first, second) -> second).orElse(null);
             default -> null;
         };
     }
