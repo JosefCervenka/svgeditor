@@ -23,8 +23,8 @@ public class LineModel extends AbstractTableModel implements IIndex {
 
         return switch (rowIndex) {
             case 0 -> columnIndex == 0 ? "x1" : line.x1;
-            case 1 -> columnIndex == 0 ? "x2" : line.x2;
-            case 2 -> columnIndex == 0 ? "y1" : line.y1;
+            case 1 -> columnIndex == 0 ? "x2" : line.y1;
+            case 2 -> columnIndex == 0 ? "y1" : line.x2;
             case 3 -> columnIndex == 0 ? "y2" : line.y2;
             case 4 -> columnIndex == 0 ? "line size" : line.lineSize;
             case 5 -> columnIndex == 0 ? "color" : line.color;
@@ -61,8 +61,8 @@ public class LineModel extends AbstractTableModel implements IIndex {
 
         switch (rowIndex) {
             case 0 -> line.x1 = numberValue;
-            case 1 -> line.x2 = numberValue;
-            case 2 -> line.y1 = numberValue;
+            case 1 -> line.y1 = numberValue;
+            case 2 -> line.x2 = numberValue;
             case 3 -> line.y2 = numberValue;
             case 4 -> line.lineSize = numberValue;
             case 5 -> line.color = ((String)value).toUpperCase();

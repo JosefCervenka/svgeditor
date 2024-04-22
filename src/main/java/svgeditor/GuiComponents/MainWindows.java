@@ -5,6 +5,7 @@ import svgeditor.GraphicsObjects.GraphicObject;
 import svgeditor.GraphicsObjects.Line;
 import svgeditor.GraphicsObjects.Rectangle;
 import svgeditor.GuiComponents.Panels.DrawingPanel;
+import svgeditor.GuiComponents.Panels.ExportPanel;
 import svgeditor.GuiComponents.Panels.ObjectManagerPanel;
 import svgeditor.GuiComponents.Panels.XmlEditorPanel;
 import svgeditor.Utils.GraphicObjectManager;
@@ -34,6 +35,9 @@ public class MainWindows extends JFrame {
 
         XmlEditorPanel xmlEditorPanel = new XmlEditorPanel();
         add(xmlEditorPanel, BorderLayout.WEST);
+
+        ExportPanel exportPanel = new ExportPanel();
+        add(exportPanel, BorderLayout.SOUTH);
 
 
 

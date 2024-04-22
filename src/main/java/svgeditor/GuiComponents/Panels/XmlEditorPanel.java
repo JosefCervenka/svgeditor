@@ -19,7 +19,7 @@ public class XmlEditorPanel extends JPanel {
         XmlSerializer xmlSerializer = new XmlSerializer();
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(e -> {
-            xmlSerializer.Deserialize(xmlTextArea.getText());
+            xmlSerializer.deserialize(xmlTextArea.getText());
         });
 
         add(saveButton);

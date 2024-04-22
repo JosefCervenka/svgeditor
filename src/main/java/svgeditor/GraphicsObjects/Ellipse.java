@@ -9,10 +9,10 @@ import java.awt.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Ellipse extends GraphicObject implements IDrawable {
 
-    @XmlAttribute(name = "x")
+    @XmlAttribute(name = "cx")
     public double x1;
 
-    @XmlAttribute(name = "y")
+    @XmlAttribute(name = "cy")
     public double x2;
 
     @XmlAttribute(name = "height")

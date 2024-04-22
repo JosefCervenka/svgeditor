@@ -15,6 +15,6 @@ public class XmlTextArea extends TextArea implements ISubscriber {
 
     @Override
     public void update() {
-        this.setText(_xmlSerializer.Serialize());
+        this.setText(_xmlSerializer.serialize());
     }
 }

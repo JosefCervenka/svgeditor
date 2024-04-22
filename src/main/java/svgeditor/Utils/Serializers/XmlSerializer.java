@@ -13,7 +13,7 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 
 public class XmlSerializer implements ISerializer {
-    public String Serialize() {
+    public String serialize() {
         Svg svg = new Svg();
         JAXBContext context = null;
         try {
@@ -27,16 +27,15 @@ public class XmlSerializer implements ISerializer {
             }
 
             marshaller.marshal(svg, stringWriter);
-            String xmlString = stringWriter.toString();
+            return stringWriter.toString();
 
-            return xmlString;
 
         } catch (JAXBException e) {
             return "Error while serializing to XML.";
         }
     }
 
-    public void Deserialize(String text) {
+    public void deserialize(String text) {
         try {
             JAXBContext context = JAXBContext.newInstance(Svg.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
