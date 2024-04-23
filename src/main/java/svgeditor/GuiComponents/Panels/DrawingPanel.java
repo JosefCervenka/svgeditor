@@ -172,7 +172,7 @@ public class DrawingPanel extends JPanel implements ISubscriber {
         double distanceX = Math.abs(endX - startX);
         double distanceY = Math.abs(endY - startY);
 
-        var rectangle = new Rectangle(startX, startY, distanceX, distanceY, "#000000");
+        var rectangle = new Rectangle(startX, startY, distanceX, distanceY, DrawingToolManager.strokeColor);
         rectangle.lineSize = DrawingToolManager.lineSize;
         return rectangle;
     }
@@ -194,7 +194,7 @@ public class DrawingPanel extends JPanel implements ISubscriber {
         double distanceX = Math.abs(endX - startX);
         double distanceY = Math.abs(endY - startY);
 
-        var ellipse = new Ellipse(startX, startY, distanceX, distanceY, "#000000");
+        var ellipse = new Ellipse(startX, startY, distanceX, distanceY, DrawingToolManager.strokeColor);
         ellipse.lineSize = DrawingToolManager.lineSize;
         return ellipse;
     }
@@ -205,7 +205,7 @@ public class DrawingPanel extends JPanel implements ISubscriber {
         double startY = DrawingToolManager.start2;
         double endY = DrawingToolManager.end2;
 
-        var line = new Line(startX, startY, endX, endY, "#000000");
+        var line = new Line(startX, startY, endX, endY, DrawingToolManager.strokeColor);
         line.lineSize = DrawingToolManager.lineSize;
         return line;
     }

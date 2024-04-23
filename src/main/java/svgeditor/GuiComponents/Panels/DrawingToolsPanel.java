@@ -3,6 +3,7 @@ package svgeditor.GuiComponents.Panels;
 import svgeditor.GuiComponents.Buttons.CreateEllipseButton;
 import svgeditor.GuiComponents.Buttons.CreateMultiLineButton;
 import svgeditor.GuiComponents.Buttons.CreateRectangleButton;
+import svgeditor.GuiComponents.ColorPickers.StrokeColorSelector;
 import svgeditor.GuiComponents.Spinners.LineSizeSpinner;
 
 import javax.swing.*;
@@ -13,5 +14,6 @@ public class DrawingToolsPanel extends JPanel {
         add(new CreateEllipseButton());
         add(new CreateRectangleButton());
         add(new LineSizeSpinner());
+        add(new StrokeColorSelector());
     }
 }

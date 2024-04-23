@@ -2,6 +2,7 @@ package svgeditor.Utils.DrawingTools;
 
 public class DrawingToolManager {
 
+    public static String strokeColor = "#000000";
     public static double lineSize = 1;
     public static DrawingToolsEnum drawingTool = DrawingToolsEnum.UNDEFINED;
 
