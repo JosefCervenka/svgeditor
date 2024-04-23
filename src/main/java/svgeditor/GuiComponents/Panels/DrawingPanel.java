@@ -2,6 +2,7 @@ package svgeditor.GuiComponents.Panels;
 
 import svgeditor.GraphicsObjects.Ellipse;
 import svgeditor.GraphicsObjects.GraphicObject;
+import svgeditor.GraphicsObjects.Line;
 import svgeditor.GraphicsObjects.Rectangle;
 import svgeditor.Utils.ComponentsObserver;
 import svgeditor.Utils.DrawingTools.DrawingToolManager;
@@ -24,6 +25,18 @@ public class DrawingPanel extends JPanel implements ISubscriber {
 
         this.addMouseMotionListener(new MouseAdapter() {
             @Override
+            public void mouseMoved(MouseEvent e){
+                if(DrawingToolManager.drawingTool == DrawingToolsEnum.MULTILINE){
+                    if(DrawingToolManager.isInitialized){
+                        DrawingToolManager.end1 = e.getX();
+                        DrawingToolManager.end2 = e.getY();
+
+                        _virtualGraphicObject = createLine();
+                        update();
+                    }
+                }
+            }
+            @Override
             public void mouseDragged(MouseEvent e) {
                 if (DrawingToolManager.drawingTool == DrawingToolsEnum.UNDEFINED)
                     return;
@@ -45,6 +58,15 @@ public class DrawingPanel extends JPanel implements ISubscriber {
                         update();
                     }
                 }
+                if(DrawingToolManager.drawingTool == DrawingToolsEnum.MULTILINE){
+                    if(DrawingToolManager.isInitialized){
+                        DrawingToolManager.end1 = e.getX();
+                        DrawingToolManager.end2 = e.getY();
+
+                        _virtualGraphicObject = createLine();
+                        update();
+                    }
+                }
             }
         });
 
@@ -62,6 +84,8 @@ public class DrawingPanel extends JPanel implements ISubscriber {
 
                         var ellipse = createEllipse();
                         GraphicObjectManager.add(ellipse);
+
+                        _virtualGraphicObject = null;
                     }
                 }
 
@@ -73,6 +97,21 @@ public class DrawingPanel extends JPanel implements ISubscriber {
 
                         var rectangle = createRectangle();
                         GraphicObjectManager.add(rectangle);
+
+                        _virtualGraphicObject = null;
+                    }
+                }
+
+                if(DrawingToolManager.drawingTool == DrawingToolsEnum.MULTILINE){
+                    if(DrawingToolManager.isInitialized){
+                        DrawingToolManager.end1 = e.getX();
+                        DrawingToolManager.end2 = e.getY();
+
+                        var line = createLine();
+                        GraphicObjectManager.add(line);
+
+                        DrawingToolManager.start1 = DrawingToolManager.end1;
+                        DrawingToolManager.start2 = DrawingToolManager.end2;
                     }
                 }
             }
@@ -95,12 +134,27 @@ public class DrawingPanel extends JPanel implements ISubscriber {
                         DrawingToolManager.isInitialized = true;
                     }
                 }
+                if(DrawingToolManager.drawingTool == DrawingToolsEnum.MULTILINE){
+
+                    //right click check
+                    if (e.getButton() == MouseEvent.BUTTON3) {
+                        DrawingToolManager.isInitialized = false;
+                        _virtualGraphicObject = null;
+                        return;
+                    }
+
+                    if(!DrawingToolManager.isInitialized){
+                        DrawingToolManager.start1 = e.getX();
+                        DrawingToolManager.start2 = e.getY();
+                        DrawingToolManager.isInitialized = true;
+                    }
+                }
             }
         });
     }
 
 
-    private static Rectangle createRectangle(){
+    private Rectangle createRectangle(){
         double startX = DrawingToolManager.start1;
         double endX = DrawingToolManager.end1;
         double startY = DrawingToolManager.start2;
@@ -119,10 +173,10 @@ public class DrawingPanel extends JPanel implements ISubscriber {
         double distanceY = Math.abs(endY - startY);
 
         var rectangle = new Rectangle(startX, startY, distanceX, distanceY, "#000000");
-        rectangle.lineSize = 1;
+        rectangle.lineSize = DrawingToolManager.lineSize;
         return rectangle;
     }
-    private static Ellipse createEllipse() {
+    private Ellipse createEllipse() {
         double startX = DrawingToolManager.start1;
         double endX = DrawingToolManager.end1;
         double startY = DrawingToolManager.start2;
@@ -141,8 +195,19 @@ public class DrawingPanel extends JPanel implements ISubscriber {
         double distanceY = Math.abs(endY - startY);
 
         var ellipse = new Ellipse(startX, startY, distanceX, distanceY, "#000000");
-        ellipse.lineSize = 1;
+        ellipse.lineSize = DrawingToolManager.lineSize;
         return ellipse;
+    }
+
+    private Line createLine() {
+        double startX = DrawingToolManager.start1;
+        double endX = DrawingToolManager.end1;
+        double startY = DrawingToolManager.start2;
+        double endY = DrawingToolManager.end2;
+
+        var line = new Line(startX, startY, endX, endY, "#000000");
+        line.lineSize = DrawingToolManager.lineSize;
+        return line;
     }
 
     @Override
