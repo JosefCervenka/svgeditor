@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class CreateMultiLineButton extends JButton {
     public CreateMultiLineButton() {
-        super("Create Multi-line");
+        super("Create Multi-Line");
 
         this.addActionListener((event) -> {
             DrawingToolManager.isInitialized = false;
