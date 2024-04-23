@@ -4,10 +4,7 @@ import svgeditor.GraphicsObjects.Ellipse;
 import svgeditor.GraphicsObjects.GraphicObject;
 import svgeditor.GraphicsObjects.Line;
 import svgeditor.GraphicsObjects.Rectangle;
-import svgeditor.GuiComponents.Panels.DrawingPanel;
-import svgeditor.GuiComponents.Panels.ExportPanel;
-import svgeditor.GuiComponents.Panels.ObjectManagerPanel;
-import svgeditor.GuiComponents.Panels.XmlEditorPanel;
+import svgeditor.GuiComponents.Panels.*;
 import svgeditor.Utils.GraphicObjectManager;
 
 import javax.swing.*;
@@ -26,6 +23,9 @@ public class MainWindows extends JFrame {
         setBackground(Color.blue);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+
+        DrawingToolsPanel drawingManagerPanel = new DrawingToolsPanel();
+        add(drawingManagerPanel, BorderLayout.NORTH);
 
         DrawingPanel drawingPanel = new DrawingPanel();
         add(drawingPanel, BorderLayout.CENTER);
