@@ -6,20 +6,25 @@ import java.io.IOException;
 
 public class FileGenerator {
 
-    public void create(String fileName, String path, String data) {
+    public void create(String fileName, String typeOfFile, String path, String data) {
 
         File directory = new File(path);
-        File file = new File(directory, fileName);
+        File file = new File(directory, fileName + "." + typeOfFile);
+
+        int index = 0;
+        while (file.exists()) {
+            file = new File(directory, fileName + "(" + (index++) + ")" + "." + typeOfFile);
+        }
+
         try {
 
-            if(file.createNewFile()) {
+            if (file.createNewFile()) {
                 FileWriter fileWriter = new FileWriter(file);
                 fileWriter.write(data);
                 fileWriter.flush();
                 fileWriter.close();
             }
-        }
-        catch (IOException exception){
+        } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
     }

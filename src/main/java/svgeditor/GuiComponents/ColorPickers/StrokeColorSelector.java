@@ -16,6 +16,7 @@ public class StrokeColorSelector extends JTextField {
             try {
                 var color = ((String)this.getText()).toUpperCase();
                 Color.decode(color);
+                this.setText(color.toUpperCase());
             } catch (NumberFormatException e) {
                 this.setText(DrawingToolManager.strokeColor);
                 return;

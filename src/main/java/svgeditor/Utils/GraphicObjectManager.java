@@ -1,9 +1,6 @@
 package svgeditor.Utils;
 
 import svgeditor.GraphicsObjects.GraphicObject;
-import svgeditor.GraphicsObjects.Line;
-
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

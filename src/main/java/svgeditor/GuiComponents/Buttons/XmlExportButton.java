@@ -23,7 +23,7 @@ public class XmlExportButton extends JButton {
             var directory = fileChooser.getSelectedFile().getPath();
 
             FileGenerator fileGenerator = new FileGenerator();
-            fileGenerator.create("svg.svg", directory, data);
+            fileGenerator.create("picture","svg", directory, data);
         });
     }
 }

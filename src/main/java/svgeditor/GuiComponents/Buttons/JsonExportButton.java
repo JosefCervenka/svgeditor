@@ -22,7 +22,7 @@ public class JsonExportButton extends JButton {
         var directory = fileChooser.getSelectedFile().getPath();
 
         FileGenerator fileGenerator = new FileGenerator();
-        fileGenerator.create("svg.json", directory, data);
+        fileGenerator.create("picture", "json", directory, data);
         });
     }
 

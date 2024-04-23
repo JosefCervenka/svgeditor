@@ -42,9 +42,6 @@ public class MainWindows extends JFrame {
 
 
         List<GraphicObject> graphicObjects = new ArrayList<>();
-        graphicObjects.add(new Line(0, 0, 100, 100, "#FF00FF"));
-        graphicObjects.add(new Rectangle(100, 100, 100, 100, "#FF0000"));
-        graphicObjects.add(new Ellipse(200, 0, 100, 100, "#FF0000"));
         GraphicObjectManager.set(graphicObjects);
     }
 
