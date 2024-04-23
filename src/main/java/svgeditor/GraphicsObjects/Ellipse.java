@@ -15,10 +15,10 @@ public class Ellipse extends GraphicObject implements IDrawable {
     @XmlAttribute(name = "cy")
     public double x2;
 
-    @XmlAttribute(name = "height")
+    @XmlAttribute(name = "rx")
     public double height;
 
-    @XmlAttribute(name = "width")
+    @XmlAttribute(name = "ry")
     public double width;
 
     public Ellipse(double x1, double x2, double width, double height, String color) {
