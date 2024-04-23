@@ -19,15 +19,13 @@ public class DrawingPanel extends JPanel implements ISubscriber {
         setBackground(Color.white);
         ComponentsObserver.addSubscriber(this);
         this.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
+            @Override
+            public void mouseReleased(MouseEvent e) {
                 if(DrawingToolManager.drawingTool == DrawingToolsEnum.UNDEFINED)
                     return;
+
                 if(DrawingToolManager.drawingTool == DrawingToolsEnum.ELLIPSE){
-                    if(!DrawingToolManager.isInitialized){
-                        DrawingToolManager.start1 = e.getX();
-                        DrawingToolManager.start2 = e.getY();
-                        DrawingToolManager.isInitialized = true;
-                    } else {
+                    if(DrawingToolManager.isInitialized){
                         DrawingToolManager.end1 = e.getX();
                         DrawingToolManager.end2 = e.getY();
                         DrawingToolManager.isInitialized = false;
@@ -39,11 +37,7 @@ public class DrawingPanel extends JPanel implements ISubscriber {
                 }
 
                 if(DrawingToolManager.drawingTool == DrawingToolsEnum.RECTANGLE){
-                    if(!DrawingToolManager.isInitialized){
-                        DrawingToolManager.start1 = e.getX();
-                        DrawingToolManager.start2 = e.getY();
-                        DrawingToolManager.isInitialized = true;
-                    } else {
+                    if(DrawingToolManager.isInitialized){
                         DrawingToolManager.end1 = e.getX();
                         DrawingToolManager.end2 = e.getY();
                         DrawingToolManager.isInitialized = false;
@@ -51,6 +45,27 @@ public class DrawingPanel extends JPanel implements ISubscriber {
                         var rectangle = createRectangle();
                         rectangle.lineSize = 1;
                         GraphicObjectManager.add(rectangle);
+                    }
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if(DrawingToolManager.drawingTool == DrawingToolsEnum.UNDEFINED)
+                    return;
+                if(DrawingToolManager.drawingTool == DrawingToolsEnum.ELLIPSE){
+                    if(!DrawingToolManager.isInitialized){
+                        DrawingToolManager.start1 = e.getX();
+                        DrawingToolManager.start2 = e.getY();
+                        DrawingToolManager.isInitialized = true;
+                    }
+                }
+
+                if(DrawingToolManager.drawingTool == DrawingToolsEnum.RECTANGLE){
+                    if(!DrawingToolManager.isInitialized){
+                        DrawingToolManager.start1 = e.getX();
+                        DrawingToolManager.start2 = e.getY();
+                        DrawingToolManager.isInitialized = true;
                     }
                 }
             }
